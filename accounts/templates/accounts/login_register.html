@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+{% if page == 'login' %}
+
+<div class="login-container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="email">Email </label> <br>
+        <input type="email" name="email" id="" placeholder="Your Email"> <br>
+        <label style="margin-top: 2vh;" for="password">Password </label> <br>
+        <input type="password" name="password" id="" placeholder="Your Password"> <br>
+        <input style="margin-top: 2vh;" class="btn-primary mx-3" type="submit" value="Login">
+        <a href="/register">Sign Up?</a>
+        <hr>
+    </form>
+</div>
+{% else %}
+<div class="signup-container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table class="details">
+            <tr>
+                <td>{{form.email.label}} </td>
+                <td width="20px">:</td>
+                <td>{{form.email}} </td>
+            </tr>
+            <tr>
+                <td>{{form.username.label}} </td>
+                <td width="20px">:</td>
+                <td>{{form.username}} </td>
+            </tr>
+            <tr>
+                <td>{{form.password1.label}} </td>
+                <td width="20px">:</td>
+                <td>{{form.password1}} </td>
+            </tr>
+            <tr>
+                <td>{{form.password2.label}} </td>
+                <td width="20px">:</td>
+                <td>{{form.password2}} </td>
+            </tr>
+        </table>
+        <input class="btn-primary" style="margin-left: 30%; margin-right: 20px;" type="submit" value="Sign Up">
+        <a href="/login">Login?</a>
+    </form>
+
+</div>
+
+{% endif %}
+
+{% endblock %}
