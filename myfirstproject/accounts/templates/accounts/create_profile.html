@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="profile-update-container">
+    <div class="profile-pic">{% if user.profile.profile_pic %} <span><img width="100px" height="100px"
+                src="{{user.profile.profile_pic.url}}" alt="profile"></span>{% endif %}</div>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <table class="details">
+            <tr>
+                <td>{{form.full_name.label}}</td>
+                <td>:</td>
+                <td>{{form.full_name}}</td>
+            </tr>
+            <tr>
+                <td>{{form.profile_pic.label}}</td>
+                <td>:</td>
+                <td>{{form.profile_pic}}</td>
+            </tr>
+            <tr>
+                <td>{{form.bio_data.label}}</td>
+                <td>:</td>
+                <td>{{form.bio_data}}</td>
+            </tr>
+            <tr>
+                <td>{{form.contact.label}}</td>
+                <td>:</td>
+                <td>{{form.contact}}</td>
+            </tr>
+            <tr>
+                <td>{{form.location.label}}</td>
+                <td>:</td>
+                <td>{{form.location}}</td>
+            </tr>
+            <tr>
+                <td>{{form.marital_status.label}}</td>
+                <td>:</td>
+                <td>{{form.marital_status}}</td>
+            </tr>
+        </table>
+
+
+        <input style="margin-left: 25%;" class="btn-primary" type="submit" value="Save"><a style="margin-left:20px;"
+            href="{{request.META.HTTP_REFERER}}">Go Back</a>
+    </form>
+
+</div>
+{% endblock %}
